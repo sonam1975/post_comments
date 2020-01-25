@@ -18,5 +18,7 @@ INSERT INTO songs (song, likeCount, repostCount, playCount) VALUES ("Sleep", 10,
 INSERT INTO songs (song, likeCount, repostCount, playCount) VALUES ("Break Away", 10, 4, 3);
 INSERT INTO songs (song, likeCount, repostCount, playCount) VALUES ("Mad", 13, 41, 3);
 INSERT INTO songs (song, likeCount, repostCount, playCount) VALUES ("Water Wave", 434, 4, 3);
+INSERT INTO songs (song, likeCount, repostCount, playCount) VALUES ("idontwannabeyouanymore", 23, 1, 13);
+INSERT INTO songs (song, likeCount, repostCount, playCount) VALUES ("Lover", 13, 1, 13);
 
 SELECT * FROM songs;
