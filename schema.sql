@@ -21,4 +21,5 @@ INSERT INTO songs (song, likeCount, repostCount, playCount) VALUES ("Water Wave"
 INSERT INTO songs (song, likeCount, repostCount, playCount) VALUES ("idontwannabeyouanymore", 23, 1, 13);
 INSERT INTO songs (song, likeCount, repostCount, playCount) VALUES ("Lover", 13, 1, 13);
 
+
 SELECT * FROM songs;
