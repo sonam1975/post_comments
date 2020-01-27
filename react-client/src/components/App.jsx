@@ -1,6 +1,7 @@
 import React from 'react';
 import WriteComment from './WriteComment.jsx';
 import ClickButtons from './ClickButtons.jsx';
+import {makeFakeImage} from '../../../database/fakeImage.jsx';
 
 class App extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class App extends React.Component {
 
     render() {
         console.log(this.state.comment);
+        console.log(makeFakeImage);
         return (
             <div>
                 <WriteComment onKeyPress={this.onKeyPress} />
