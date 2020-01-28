@@ -4,4 +4,4 @@ This is the readme file for the Post Comments and Buttons of the SoundCloud clon
 
 ## API Call with sample Data
 /songs API GET Request
-<img src="./img/API.gif" title="video walkthrough" width="" alt="video walkthrough" />
+![API Call Demo](img/API.gif)
