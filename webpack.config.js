@@ -18,6 +18,17 @@ module.exports = {
         query: {
             presets: ['@babel/preset-react', '@babel/preset-env']
         }
+      },
+      {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+        limit: 10000,
+      },
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
       }
     ]
   }
