@@ -79,8 +79,22 @@ const Img = styled.img`
 `;
 
 const ButtonWithStat = styled.div`
-    display: flex;
     min-height: 33px;
+    display: block;
+    width: 822px;
+    position: relative;
+
+    @media only screen and (max-width: 1220px) {
+        width: 662px;
+    }
+    @media only screen and (max-width: 1065px) {
+        width: 562px;
+    }
 `;
+
+// const ButtonWithStat = styled.div`
+//     display: flex;
+//     min-height: 33px;
+// `;
 
 export default App;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import heart from '../../../img/heart.png';
 import repost from '../../../img/repost.png';
 import share from '../../../img/share.png';
