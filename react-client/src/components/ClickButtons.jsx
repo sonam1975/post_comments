@@ -5,6 +5,8 @@ import repost from '../../../img/repost.png';
 import share from '../../../img/share.png';
 import nextUp from '../../../img/addToList.png';
 import more from '../../../img/more.png';
+import addToPlayList from '../../../img/addToPlayList.png';
+import station from '../../../img/Station.png';
 
 class ClickButtons extends React.Component {
     constructor(props) {
@@ -13,13 +15,14 @@ class ClickButtons extends React.Component {
             liked: false,
             reposted: false,
             addNextUp: false,
-            moreBtn: false
+            showMenu: false
         };
         this.handleLikeClick = this.handleLikeClick.bind(this);
         this.handleRepostClick = this.handleRepostClick.bind(this);
         this.handleShareClick = this.handleShareClick.bind(this);
         this.handleNextUpClick = this.handleNextUpClick.bind(this);
-        this.handleMoreClick = this.handleMoreClick.bind(this);
+        this.showMenu = this.showMenu.bind(this);
+        this.closeMenu = this.closeMenu.bind(this);
     };
 
     handleLikeClick() {
@@ -46,12 +49,20 @@ class ClickButtons extends React.Component {
         }));
     };
 
-    handleMoreClick() {
-        this.setState(state => ({
-            moreBtn: !state.moreBtn
-        }));
-        console.log(this.state.moreBtn);
+    showMenu(event) {
+        event.preventDefault();
+        this.setState({ showMenu: true }, () => {
+            document.addEventListener('click', this.closeMenu);
+        });
     };
+
+    closeMenu() {
+        if (!this.dropdownMenu.contains(event.target)) {
+            this.setState({ showMenu: false }, ()=> {
+                document.removeEventListener('click', this.closeMenu);
+            });
+        }
+    }
 
     render() {
         return (
@@ -86,21 +97,40 @@ class ClickButtons extends React.Component {
                         <span className="icon"><Img src={nextUp} /></span><Text className="text">Add to Next up</Text>
                     </NextUpButton>
                 }
-                {this.state.moreBtn ?
-                    <MoreButtonClicked type="button" onClick={this.handleMoreClick}>
-                        <span className="icon"><ImgClicked src={more} /></span><TextClicked className="text">More</TextClicked>
-                    </MoreButtonClicked>
-                    :
-                    <MoreButton type="button" onClick={this.handleMoreClick}>
-                        <span className="icon"><Img src={more} /></span><Text className="text">More</Text>
-                    </MoreButton>
-                }            
+                <MoreDropDown>
+                    {this.state.showMenu ?
+                        <MoreButtonClicked type="button" onClick={this.showMenu}>
+                            <span className="icon"><ImgClicked src={more} /></span><TextClicked className="text">More</TextClicked>
+                        </MoreButtonClicked>
+                        :
+                        <MoreButton type="button" onClick={this.showMenu}>
+                            <span className="icon"><Img src={more} /></span><Text className="text">More</Text>
+                        </MoreButton>
+                    }
+                    {
+                        this.state.showMenu ?
+                        (
+                            <MoreContent className="menu"
+                                ref={(element) => {
+                                    this.dropdownMenu = element;
+                                }}
+                            >
+                                <DropDownSelection href="#"><Img src={addToPlayList} /><InnerText className="text">Add to playlist</InnerText></DropDownSelection>
+                                <DropDownSelection href="#"><Img src={station} /><InnerText className="text">Station</InnerText></DropDownSelection>
+                            </MoreContent>
+                        )
+                        : (
+                            null
+                        )
+                    }
+                </MoreDropDown>
             </GroupButtons>
         )
     }
 }
 
-// Styled Components
+
+// ####################### Styled Components ################################################################
 const GroupButtons = styled.div`
     float: left;
     vertical-align: middle;
@@ -121,6 +151,7 @@ const LikeButton = styled.button`
 
     &:hover {
         border: 1px solid #bfbfbf;
+        background-color: white;
     }
     &:focus {
         outline: none !important;
@@ -169,7 +200,6 @@ const RepostButton = styled.button`
     cursor: pointer;
     background-color: white;
     margin: 0 5px 0 0;
-    border: 1px solid #e5e5e5;
 
     &:hover {
         border: 1px solid #bfbfbf;
@@ -221,7 +251,6 @@ const ShareButton = styled.button`
     cursor: pointer;
     background-color: white;
     margin: 0 5px 0 0;
-    border: 1px solid #e5e5e5;
 
     &:hover {
         border: 1px solid #bfbfbf;
@@ -249,7 +278,6 @@ const NextUpButton = styled.button`
     cursor: pointer;
     background-color: white;
     margin: 0 5px 0 0;
-    border: 1px solid #e5e5e5;
 
     &:hover {
         border: 1px solid #bfbfbf;
@@ -301,7 +329,6 @@ const MoreButton = styled.button`
     cursor: pointer;
     background-color: white;
     margin: 0 5px 0 0;
-    border: 1px solid #e5e5e5;
 
     &:hover {
         border: 1px solid #bfbfbf;
@@ -342,6 +369,44 @@ const MoreButtonClicked = styled.button`
     };
 `;
 
+/* The container <div> - needed to position the drop down content */
+const MoreDropDown = styled.div`
+    display: inline-block;
+    position: relative;
+`;
+
+/* More Button Dropdown Content (Hidden by default) */
+const MoreContent = styled.div`
+
+    position: absolute;
+    overflow: auto;
+    z-index: 1;
+`;
+
+const DropDownSelection = styled.button`
+    text-decoration: none;
+    display: block;
+    display: flex;
+    min-width: 145px;
+    min-height: 32px;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+
+    &:hover {
+        background-color: #f1f1f1;
+    }
+    &:focus {
+        outline: none !important;
+    }
+`;
+
+const InnerText = styled.span`
+    text-indent: 5px;
+    color: #333;
+`;
+
 const ImgClicked = styled.img`
     height: 21px;
     filter: invert(39%) sepia(100%) saturate(2820%) hue-rotate(360deg) brightness(103%) contrast(110%);
@@ -361,3 +426,7 @@ const Text = styled.span`
 `;
 
 export default ClickButtons;
+
+
+// Reference
+// Dropdown Menu - https://blog.campvanilla.com/reactjs-dropdown-menus-b6e06ae3a8fe
