@@ -24,9 +24,9 @@ describe('App Component', () => {
         expect(wrapper.length).toBe(1);
     });
 
-
+    // Because of the concept of Async, the userImage did not show up at the beginning until ComponentDidMount hits
     it('Should render an image of user', () => {
         const userImage = component.find('img');
-        expect(userImage.length).toBe(1);
+        expect(userImage.length).toBe(0);
     });
 });

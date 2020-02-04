@@ -1,12 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import heart from '../../../img/heart.png';
-import repost from '../../../img/repost.png';
-import share from '../../../img/share.png';
-import nextUp from '../../../img/addToList.png';
-import more from '../../../img/more.png';
-import addToPlayList from '../../../img/addToPlayList.png';
-import station from '../../../img/Station.png';
+
 
 class ClickButtons extends React.Component {
     constructor(props) {
@@ -69,42 +63,42 @@ class ClickButtons extends React.Component {
             <GroupButtons>
                 {this.state.liked ? 
                     <LikeButtonClicked type="button" onClick={this.handleLikeClick}>
-                        <span className="icon"><ImgClicked src={heart} /></span><TextClicked className="text">Liked</TextClicked>
+                        <span className="icon"><ImgClicked src="./img/heart.png" /></span><TextClicked className="text">Liked</TextClicked>
                     </LikeButtonClicked>
                     :
                     <LikeButton type="button" onClick={this.handleLikeClick}>
-                        <span className="icon"><Img src={heart} /></span><Text className="text">Like</Text>
+                        <span className="icon"><Img src="./img/heart.png" /></span><Text className="text">Like</Text>
                     </LikeButton>
                 }
                 {this.state.reposted ?
                     <RepostButtonClicked type="button" onClick={this.handleRepostClick}>
-                        <span className="icon"><ImgClicked src={repost} /></span><TextClicked className="text">Reposted</TextClicked>
+                        <span className="icon"><ImgClicked src="./img/repost.png" /></span><TextClicked className="text">Reposted</TextClicked>
                     </RepostButtonClicked>
                     :
                     <RepostButton type="button" onClick={this.handleRepostClick}>
-                        <span className="icon"><Img src={repost} /></span><Text className="text">Repost</Text>
+                        <span className="icon"><Img src="./img/repost.png" /></span><Text className="text">Repost</Text>
                     </RepostButton>
                 }
                 <ShareButton type="button" onClick={this.handleShareClick}>
-                    <span className="icon"><Img src={share} /></span><Text className="text">Share</Text>
+                    <span className="icon"><Img src="./img/share.png" /></span><Text className="text">Share</Text>
                 </ShareButton>
                 {this.state.addNextUp ?
                     <NextUpButtonClicked type="button" onClick={this.handleNextUpClick}>
-                        <span className="icon"><ImgClicked src={nextUp} /></span><TextClicked className="text">Added</TextClicked>
+                        <span className="icon"><ImgClicked src="./img/addToList.png" /></span><TextClicked className="text">Added</TextClicked>
                     </NextUpButtonClicked>
                     :
                     <NextUpButton type="button" onClick={this.handleNextUpClick}>
-                        <span className="icon"><Img src={nextUp} /></span><Text className="text">Add to Next up</Text>
+                        <span className="icon"><Img src="./img/addToList.png" /></span><Text className="text">Add to Next up</Text>
                     </NextUpButton>
                 }
                 <MoreDropDown>
                     {this.state.showMenu ?
                         <MoreButtonClicked type="button" onClick={this.showMenu}>
-                            <span className="icon"><ImgClicked src={more} /></span><TextClicked className="text">More</TextClicked>
+                            <span className="icon"><ImgClicked src="./img/more.png" /></span><TextClicked className="text">More</TextClicked>
                         </MoreButtonClicked>
                         :
                         <MoreButton type="button" onClick={this.showMenu}>
-                            <span className="icon"><Img src={more} /></span><Text className="text">More</Text>
+                            <span className="icon"><Img src="./img/more.png" /></span><Text className="text">More</Text>
                         </MoreButton>
                     }
                     {
@@ -115,8 +109,8 @@ class ClickButtons extends React.Component {
                                     this.dropdownMenu = element;
                                 }}
                             >
-                                <DropDownSelection href="#"><Img src={addToPlayList} /><InnerText className="text">Add to playlist</InnerText></DropDownSelection>
-                                <DropDownSelection href="#"><Img src={station} /><InnerText className="text">Station</InnerText></DropDownSelection>
+                                <DropDownSelection ><Img src="./img/addToPlayList.png" /><InnerText className="text">Add to playlist</InnerText></DropDownSelection>
+                                <DropDownSelection href="#"><Img src="./img/Station.png" /><InnerText className="text">Station</InnerText></DropDownSelection>
                             </MoreContent>
                         )
                         : (
@@ -125,6 +119,7 @@ class ClickButtons extends React.Component {
                     }
                 </MoreDropDown>
             </GroupButtons>
+
         )
     }
 }

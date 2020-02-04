@@ -1,8 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import play from '../../../img/play.png';
-import heart from '../../../img/heart.png';
-import repost from '../../../img/repost.png';
 
 class Stat extends React.Component {
     constructor(props) {
@@ -22,15 +19,15 @@ class Stat extends React.Component {
         return (
             <GroupData>
                 <PlayCountData>
-                    <Img src={play}></Img>
+                    <Img src="./img/play.png"></Img>
                     <Num>{playCount}</Num>
                 </PlayCountData>
                 <LikeData>
-                    <Img src={heart}></Img> 
+                    <Img src="./img/heart.png"></Img> 
                     <Num>{likeCount}</Num>
                 </LikeData>
                 <RepostData>
-                    <Img src={repost}></Img>
+                    <Img src="./img/repost.png"></Img>
                     <Num>{repostCount}</Num>
                 </RepostData>
             </GroupData>
