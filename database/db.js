@@ -15,7 +15,7 @@ const getSongs = (song, callback) => {
                 playCount: music.playCount,
                 userImageURL: music.userImageURL
             }));
-            // console.log(songs);
+            // console.log("--------------", songs);
             callback(null, songs);
         }
     })
