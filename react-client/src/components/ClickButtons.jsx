@@ -130,7 +130,7 @@ class ClickButtons extends React.Component {
                         )
                     }
                     {this.state.showPlaylistModal ? (
-                        <PlaylistModal onClose={this.handleClosePlaylistModal} />
+                        <PlaylistModal onClose={this.handleClosePlaylistModal}  />
                     ) : null }
                 </MoreDropDown>
 

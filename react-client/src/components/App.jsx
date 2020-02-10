@@ -92,9 +92,4 @@ const ButtonWithStat = styled.div`
     }
 `;
 
-// const ButtonWithStat = styled.div`
-//     display: flex;
-//     min-height: 33px;
-// `;
-
 export default App;

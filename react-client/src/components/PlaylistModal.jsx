@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import styled,  { css, keyframes }  from 'styled-components';
 
 const modalRoot = document.getElementById('playlistModal');
 
@@ -70,31 +70,53 @@ class PlaylistModal extends React.Component {
 
 // Styled Components
 const ModalBackground = styled.div`
-    position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
-    right: 0;
-    display: grid;
-    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
     background-color: hsla(0,0%,94.9%,.9);
-    transition: .4s;
+`;
+
+const MoveIn = keyframes`
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 30%;
+  }
+`;
+
+const MoveOut = keyframes`
+  0% {
+    top: 60%;
+  }
+  100% {
+    top: 0%;
+  }
 `;
 
 const OuterContainer = styled.div`
-    margin: 76px 0 30px;
-    top: 0;
+    // margin: 76px 0 30px;
+    // top: 0;
 
 
 
 `;
 
 const Wrapper = styled.div`
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-auto-rows: minmax(232px, auto);
-    justify-items: stretch;
-    align-items: stretch;
-    justify-content: center;
+    top: 20%;
+    left: 50%;
+    position: absolute;
+    width: 500px;
+    height: 232px;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: space-evenly;
+    background: white;
+    animation: ${MoveIn};
+    animation-duration: 0.5s;
 `;
 
 const PlaylistTitleForm = styled.form`
@@ -216,3 +238,5 @@ const SaveButton = styled.button`
 `;
 
 export default PlaylistModal;
+
+// Animated CSS tutorial - http://reactcommunity.org/react-transition-group/css-transition
