@@ -4,12 +4,13 @@
   "description": "HRSF125 Front-end Capstone: SoundCloud",
   "main": "webpack.config.js",
   "scripts": {
-    "react-dev": "webpack -d --watch",
     "start": "nodemon server/index.js",
+    "react-dev": "webpack --config webpack.prod.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors",
-    "seed": "node ./database/seed.js"
+    "seed": "node ./database/seed.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "author": "",
   "license": "ISC",
@@ -60,6 +61,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^25.1.0",
     "jest-transform-stub": "^2.0.0",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "webpack-merge": "^4.2.2"
   }
 }

@@ -34,14 +34,10 @@ class App extends React.Component {
     }
 
     render() {
-        if (this.state.value.length > 0) {
-            var image = this.state.value[0].userImageURL;
-        }
-
         return (
             <div>
                 <UserComment>
-                    <Img src={image}></Img>
+                    <Img src="https://soundclouduserphoto.s3-us-west-1.amazonaws.com/photo.jpg"></Img>
                     <WriteComment onKeyPress={this.onKeyPress} />
                 </UserComment>
                 <ButtonWithStat>
