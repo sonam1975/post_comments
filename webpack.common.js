@@ -1,5 +1,6 @@
 const path = require('path');
 
+
 const SRC_DIR = path.join(__dirname, '/react-client/src');
 const DIST_DIR = path.join(__dirname, '/public');
 
