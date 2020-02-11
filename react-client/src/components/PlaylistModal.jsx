@@ -90,7 +90,7 @@ const MoveIn = keyframes`
 
 const MoveOut = keyframes`
   0% {
-    top: 60%;
+    top: 50%;
   }
   100% {
     top: 0%;
@@ -106,7 +106,7 @@ const OuterContainer = styled.div`
 `;
 
 const Wrapper = styled.div`
-    top: 20%;
+    top: 30%;
     left: 50%;
     position: absolute;
     width: 500px;
