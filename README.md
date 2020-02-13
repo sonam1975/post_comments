@@ -1,13 +1,39 @@
-# SoundCloud Site
+##Post_comment
+#Supporting CRUD from API
 
-This is the readme file for the Post Comments and Buttons of the SoundCloud clone "SoundClone."
+#CREATE
+Route --> '/user-id/artist/song-name/comment' 
+           Adds a comment for a particular song of a matching artist for that user's accout.
+           
+            '/user-d/artist/song-name/like'
+            Adds a like for a particular song of a matching artist for that user's accout.
+            
+            '/user-id/artist/song-name/repost'
+            Adds a number of replay for a particular song of a matching artist for that user's accout.
 
-## Instruction for proxy server
-1) Run "npm install" on package.json
-2) Run "mysql -u root -p < database/schema.sql" to create database and table for mysql
-    - if you run into mysql error related to issue of config.js file not find. Update "yourconfig.js" with your mysql password and update the file link at the top for "db.js" and "seed.js"
-3) Run "npm run seed" to create faker data for the table
 
-## API Call with sample Data
-/songs API GET Request
-![API Call Demo](img/API.gif)
+#READ
+Legacy Route --->'/songs'
+            returns all the songs and related information like number of plays, number of likes, name of the song etc.
+            
+            "/artist/song-name"
+            returns the information about the  particular song of specific artist like comments,song_url, number of likes, number of replays, users who liked(their info like name, image_url), user who reposted(their info like name, image_url)
+            
+          
+
+#UPDATE
+
+Routes ----> '/user-id/artist/song-name/comment' 
+           Updates a comment for a particular song of a matching artist for that user's accout.
+           
+            '/user-id/artist/song-name/like'
+            Updates  like for a particular song of a matching artist for that user's accout.
+            
+            'user-id/artist/song-name/repost'
+            Updates a number of replay for a particular song of a matching artist for that user's accout.
+
+#DELETE
+
+Routes ---> '/user-id/artist/song-name/comment' 
+           Deletes a comment for a particular song of a matching artist for that user's accout.
+           
