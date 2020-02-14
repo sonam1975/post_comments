@@ -7,26 +7,105 @@
 
 
 
-           '/user/user:id/song:id/comment' 
-           Adds a comment for a particular song of a matching artist for that user's accout. 
+           'POST /songs/comment' 
+            Adds a comment for a particular song of a matching artist for that user's accout. 
+            req.body = {
+              user-id: INT
+              user: String,
+              comment: String
+              }
+              
+                    responses with a status of whether it is posted or not. 
            
-           '/user/user:id/song:id/like'
+           'POST /songs/like'
             Adds a like for a particular song of a matching artist for that user's accout.
-            
-            '/user/user:id/song:id/plays'
+            req.body = {
+              user-id: INT,
+              user-name; String,
+              like: INT
+            }
+                          responses with a status of whether it is posted or not. 
+
+            'POST /songs/plays'
             Adds number of plays for a particular song id for the user's account
             
-            '/user/user:id/song:id/repost'
+            req.body = {
+              user-id: INT,
+              user-name; String,
+              playsCount: INT
+            }
+                          responses with a status of whether it is posted or not. 
+
+            'POST /songs/repost'
             Adds a number of replay for a particular song of a matching artist for that user's accout.
+            
+            req.body = {
+             user-id: INT,
+              user-name; String,
+              like: INT
+            }
+                          responses with a status of whether it is posted or not. 
+
 
 
 #READ
                                  Route and Info
                                  
-             '/songs' - Legacy Route
-            returns all the songs and related information like number of plays, number of likes, name of the song etc.
-            "/user/user:id/song:id"
-            returns the information about the  particular song of specific artist like comments,song_url, number of likes, number of replays, users who liked(their info like name, image_url), user who reposted(their info like name, image_url)
+             'GET /songs' - Legacy Route
+            returns a JSON object containing the information about the song 
+            song: [
+                    {
+                      'id': Number,
+                      'songName': String,
+                      'artist': String,
+                      
+                      'user': [
+                        {
+                          id: Number,
+                          'imageUrl': String,
+                          'userName': String,
+                          'comments': String,
+                          'likeCount': Number,
+                          'repostCount': Number,
+                          'playCount': Number
+                        }
+                      ]
+                    }
+                  ]
+            
+            'GET /songs/comments'
+            returns all the comments for a particular song which would be a JSON object.
+            comments :[ {'userName':String,
+                        'userId' : INT, 
+                        'comment': String},
+                        .
+                        .
+                        .
+                        .
+                        .
+                        {'userName':String,
+                        'userId' : INT, 
+                        'comment': String}
+                        ]
+                        
+                        
+             'GET /songs/likes'
+            returns all the number of likes for a particular song which would be a number
+            likes : INT
+            
+            
+            
+            'GET /songs/repost'
+            returns all the number of reposts for a particular song which would be a number
+            repost : INT
+            
+            
+            
+            'GET /songs/playsCount'
+            returns all the number of likes for a particular song which would be a number
+            playsCount : INT
+                        
+              
             
           
 
@@ -35,26 +114,74 @@
 
 
 
-           '/user/user:id/song:id/comment' 
+           'PUT /songs/user:name/user:id/comment' 
            Updates a comment for a particular song of a matching artist for that user's accout.
-           '/user/user:id/song:id/like'
+           req.body = {
+            user-name:String,
+            user-id: INT,
+            comment: String
+          }
+          
+                       responses with a status of whether it is updated or not. 
+
+           
+           
+           
+           'PUT /songs/user:name/user:id/like'
             Updates  like for a particular song of a matching artist for that user's accout.
-            '/user/user:id/song:id/repost'
+            req.body = {
+              user-name:String,
+              user-id: INT,
+              likeCount: INT
+          }
+            
+                          responses with a status of whether it is updated or not. 
+
+            
+            
+            'PUT /songs/user:name/user:id/repost'
             Updates a number of repost for a particular song of a matching artist for that user's accout.
-            '/user/user:id/song:id/plays'
+            req.body = {
+              user-name:String,
+              user-id: INT,
+              repostCount: INT
+          }
+                          responses with a status of whether it is updated or not. 
+
+            
+            
+            
+            'PUT /songs/user:name/user:id/plays'
             Updates the number plays for a particular song id. 
+            
+            req.body = {
+              user-name:String,
+              user-id: INT,
+              playsCount: INT
+          }
+                 responses with a status of whether it is updated or not. 
+                 
+                 
+                 
 
 #DELETE
                                  Route and Info       
 
 
 
-           '/user/user:id/song:id/comment' 
+           'DELETE /songs/user:name/user:id/comment' 
            Deletes a comment for a particular song of a matching artist for that user's account.
-           '/user/user:id/song:id/like'
-            Deletes  like for a particular song of a matching artist for that user's accout.
-            '/user/user:id/song:id/repost'
-            Deletes a number of repost for a particular song of a matching artist for that user's accout.
-            'user/user:id/song:id/plays'
-            Deletes the number plays for a particular song id. 
+           req.body = {
+              user-name:String,
+              user-id: INT,
+              comment: String
+          }
+          
+          gets a respond with status completed or not 
+           
+           
+           
+         
+            
+       
            
