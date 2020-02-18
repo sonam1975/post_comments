@@ -7,7 +7,7 @@
 
 
 
-           'POST /songs/comment' 
+           'POST /songs/:songs-id/comment' 
             Adds a comment for a particular song of a matching artist for that user's accout. 
             req.body = {
               user-id: INT
@@ -17,7 +17,7 @@
               
                     responses with a status of whether it is posted or not. 
            
-           'POST /songs/like'
+           'POST /songs/:song-id/like'
             Adds a like for a particular song of a matching artist for that user's accout.
             req.body = {
               user-id: INT,
@@ -26,7 +26,7 @@
             }
                           responses with a status of whether it is posted or not. 
 
-            'POST /songs/plays'
+            'POST /songs/:song-id/plays'
             Adds number of plays for a particular song id for the user's account
             
             req.body = {
@@ -36,7 +36,7 @@
             }
                           responses with a status of whether it is posted or not. 
 
-            'POST /songs/repost'
+            'POST /songs/:song-id/repost'
             Adds a number of replay for a particular song of a matching artist for that user's accout.
             
             req.body = {
@@ -53,28 +53,30 @@
                                  
              'GET /songs' - Legacy Route
             returns a JSON object containing the information about the song 
-            song: [
-                    {
+            
+                    songs:[{
                       'id': Number,
                       'songName': String,
                       'artist': String,
+                      'album': String,
+                      'releasedDate': Date},
+                      .
+                      .
+                      .
+                      .
+                      .
+                      .
+                      .
+                      'id': Number,
+                      'songName': String,
+                      'artist': String,
+                      'album': String,
+                      'releasedDate': Date
                       
-                      'user': [
-                        {
-                          id: Number,
-                          'imageUrl': String,
-                          'userName': String,
-                          'comments': String,
-                          'likeCount': Number,
-                          'repostCount': Number,
-                          'playCount': Number
-                        }
-                      ]
-                    }
-                  ]
+                    ]
             
-            'GET /songs/comments'
-            returns all the comments for a particular song which would be a JSON object.
+            'GET /songs/songs-id/comments'
+            returns all the comments for a particular song by all the users which would be a JSON object.
             comments :[ {'userName':String,
                         'userId' : INT, 
                         'comment': String},
@@ -89,21 +91,32 @@
                         ]
                         
                         
-             'GET /songs/likes'
-            returns all the number of likes for a particular song which would be a number
+             'GET /songs/song-id/likes'
+            returns total number of likes for a particular song which would be a number
             likes : INT
             
             
             
-            'GET /songs/repost'
-            returns all the number of reposts for a particular song which would be a number
+            'GET /songs/song-id/reposts'
+            returns total number of reposts for a particular song which would be a number
             repost : INT
             
             
             
-            'GET /songs/playsCount'
+            'GET /songs/song-id/playsCount'
             returns all the number of likes for a particular song which would be a number
             playsCount : INT
+            
+            'GET /songs/:song-id/username/:user-id/comment'
+            gets the comment date and time posted by the user for the particular song
+            {comment: String,
+            Date: Date,
+            PostedTime: Time,
+            timeSpan: Time
+            }
+            
+            
+            
                         
               
             
@@ -114,10 +127,10 @@
 
 
 
-           'PUT /songs/user:name/user:id/comment' 
+           'PUT /songs/:song-id/:username/:user-id/comment' 
            Updates a comment for a particular song of a matching artist for that user's accout.
            req.body = {
-            user-name:String,
+           
             user-id: INT,
             comment: String
           }
@@ -127,19 +140,19 @@
            
            
            
-           'PUT /songs/user:name/user:id/like'
+           'PUT /songs/:song-id/:username/:user-id/like'
             Updates  like for a particular song of a matching artist for that user's accout.
             req.body = {
               user-name:String,
               user-id: INT,
-              likeCount: INT
+              likeCount: INT(Either 1 or 0)
           }
             
                           responses with a status of whether it is updated or not. 
 
             
             
-            'PUT /songs/user:name/user:id/repost'
+            'PUT /songs/:song-id/:username/:user-id/repost'
             Updates a number of repost for a particular song of a matching artist for that user's accout.
             req.body = {
               user-name:String,
@@ -151,7 +164,7 @@
             
             
             
-            'PUT /songs/user:name/user:id/plays'
+            'PUT /songs/song-id/:username/:user-id/playsCount'
             Updates the number plays for a particular song id. 
             
             req.body = {
@@ -162,19 +175,51 @@
                  responses with a status of whether it is updated or not. 
                  
                  
-                 
-
-#DELETE
+            
+  #DELETE
                                  Route and Info       
 
 
 
-           'DELETE /songs/user:name/user:id/comment' 
+           'DELETE /songs/song-id/:username/:user-id/comment' 
            Deletes a comment for a particular song of a matching artist for that user's account.
            req.body = {
               user-name:String,
               user-id: INT,
               comment: String
+          }
+          
+          gets a respond with status completed or not 
+          
+          
+          'DELETE /songs/song-id/:username/:user-id
+           Deletes the song
+           req.body = {
+             
+              user-id: INT,
+              song-id: INT
+          }
+          
+          gets a respond with status completed or not 
+          
+          
+          'DELETE /album/album-id/:username/:user-id
+           Deletes the album from the user's account
+           req.body = {
+             
+              user-id: INT,
+              album-id: INT
+          }
+          
+          gets a respond with status completed or not 
+          
+          
+          'DELETE /album/album-id/:username/:user-id
+           Deletes the album from the user's account
+           req.body = {
+             
+              user-id: INT,
+              album-id: INT
           }
           
           gets a respond with status completed or not 
