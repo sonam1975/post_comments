@@ -1,3 +1,10 @@
 node_modules
-database/config.js
+mysql/config.js
 125FEC.pem
+mysql/csvGenerator/albums.csv
+mysql/csvGenerator/artists.csv
+mysql/csvGenerator/comments.csv
+mysql/csvGenerator/likes.csv
+mysql/csvGenerator/reposts.csv
+mysql/csvGenerator/songs.csv
+mysql/csvGenerator/users.csv
