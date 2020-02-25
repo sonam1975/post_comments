@@ -1,14 +1,14 @@
 const faker = require("faker");
 const fs = require("fs");
 
-const writeComments = fs.createWriteStream("comments.csv");
+const writeComments = fs.createWriteStream("commentsTest.csv");
 writeComments.write(
   "comments_id,comment,posted, song_time, songs_id, users_id\n",
   "utf8"
 );
 
 function writeInCsvComments(writer, encoding, callback) {
-  let i = 50000000;
+  let i = 200;
   let id = 0;
   function write() {
     let ok = true;
@@ -23,7 +23,7 @@ function writeInCsvComments(writer, encoding, callback) {
         ":" +
         Math.floor(Math.random() * Math.floor(60));
       const songs_id = Math.floor(Math.random() * Math.floor(10000000));
-      const users_id = Math.floor(Math.random() * Math.floor(2000000));
+      const users_id = Math.floor(Math.random() * Math.floor(10000000));
       const data = `${id},${comment},${posted},${songTime},${songs_id}, ${users_id}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);

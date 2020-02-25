@@ -4,7 +4,7 @@ const loadLikes = () => {
   const likes = `load data local infile '../csvGenerator/likes.csv'
      into table likes
      fields terminated by ','
-     enclosed by '"'
+     optionally enclosed by '"'
      lines terminated by '\n'
       ignore 1 rows`;
 

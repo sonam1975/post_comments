@@ -8,3 +8,4 @@ mysql/csvGenerator/likes.csv
 mysql/csvGenerator/reposts.csv
 mysql/csvGenerator/songs.csv
 mysql/csvGenerator/users.csv
+mysql/csvGenerator/songsTest.csv

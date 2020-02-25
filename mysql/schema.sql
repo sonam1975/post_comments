@@ -1,3 +1,5 @@
+
+
 DROP DATABASE IF EXISTS commentsDb;
 
 CREATE DATABASE commentsDb;
@@ -46,60 +48,65 @@ CREATE TABLE users
       (artists_id) REFERENCES artists
       (artists_id)
   );
-      CREATE TABLE likes
+
+
+
+
+      CREATE TABLE songs
       (
-        likes_id INT NOT NULL
-        AUTO_INCREMENT,
-            liked BOOLEAN,
-            users_id INT,
-            PRIMARY KEY
-        (likes_id),
-            FOREIGN KEY
-        (users_id) REFERENCES users
-        (users_id)
-
-
-          );
-        CREATE TABLE reposts
-        (
-          reposts_id INT NOT NULL
-          AUTO_INCREMENT,
-            repost BOOLEAN,
-            users_id INT,
-            PRIMARY KEY
-          (reposts_id),
-            FOREIGN KEY
-          (users_id) REFERENCES users
-          (users_id)
-          );
-
-
-          CREATE TABLE songs
-          (
-            songs_id INT
-            AUTO_INCREMENT NOT NULL,
+        songs_id INT
+        AUTO_INCREMENT NOT NULL,
        titles VARCHAR
-            (20) NOT NULL,
+        (20) NOT NULL,
         play_counts INT,
         albums_id INT,
-        likes_id INT,
-        reposts_id INT,
+
         PRIMARY KEY
-            (songs_id),
+        (songs_id),
         FOREIGN KEY
-            (albums_id) REFERENCES albums
-            (albums_id),
-        FOREIGN KEY
-            (likes_id) REFERENCES likes
-            (likes_id),
-        FOREIGN KEY
-            (reposts_id) REFERENCES reposts
-            (reposts_id)
+        (albums_id) REFERENCES albums
+        (albums_id)
+
 
 );
 
 
 
+        CREATE TABLE likes
+        (
+          likes_id INT NOT NULL
+          AUTO_INCREMENT,
+
+            users_id INT,
+            songs_id INT,
+            PRIMARY KEY
+          (likes_id),
+            FOREIGN KEY
+          (users_id) REFERENCES users
+          (users_id),
+            FOREIGN KEY
+          (songs_id) REFERENCES songs
+          (songs_id)
+
+
+          );
+
+          CREATE TABLE reposts
+          (
+            reposts_id INT NOT NULL
+            AUTO_INCREMENT,
+
+            users_id INT,
+            songs_id INT,
+            PRIMARY KEY
+            (reposts_id),
+            FOREIGN KEY
+            (users_id) REFERENCES users
+            (users_id),
+            FOREIGN KEY
+            (songs_id) REFERENCES songs
+            (songs_id)
+          );
 
 
 

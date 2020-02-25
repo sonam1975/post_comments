@@ -2,13 +2,10 @@ const faker = require("faker");
 const fs = require("fs");
 
 const writeSongs = fs.createWriteStream("songs.csv");
-writeSongs.write(
-  "songs_id,titles,play_counts, albums_id, likes_id, reposts_id\n",
-  "utf8"
-);
+writeSongs.write("songs_id,titles,play_counts, albums_id\n", "utf8");
 
 function writeSongsInCsv(writer, encoding, callback) {
-  let i = 10000000;
+  let i = 100;
   let id = 0;
   function write() {
     let ok = true;
@@ -17,11 +14,9 @@ function writeSongsInCsv(writer, encoding, callback) {
       id += 1;
 
       const titles = faker.random.words();
-      const albums_id = Math.floor(Math.random() * Math.floor(3000000));
-      const likes_id = Math.floor(Math.random() * Math.floor(2000000));
-      const reposts_id = Math.floor(Math.random() * Math.floor(1000000));
+      const albums_id = Math.floor(Math.random() * Math.floor(5000000));
       const play_count = Math.floor(Math.random() * Math.floor(4000000));
-      const data = `${id},${titles},${play_count},${albums_id},${likes_id}, ${reposts_id}\n`;
+      const data = `${id},${titles},${play_count},${albums_id}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {

@@ -5,7 +5,7 @@ const writeAlbums = fs.createWriteStream("albums.csv");
 writeAlbums.write("albums_id,titles, artists_id\n", "utf8");
 
 function writeAlbumsInCsv(writer, encoding, callback) {
-  let i = 1000000;
+  let i = 5000000;
   let id = 0;
   function write() {
     let ok = true;
@@ -14,7 +14,7 @@ function writeAlbumsInCsv(writer, encoding, callback) {
       id += 1;
 
       const title = faker.random.words();
-      const randomArtist = Math.floor(Math.random() * Math.floor(10000000));
+      const randomArtist = Math.floor(Math.random() * Math.floor(2000000));
 
       const data = `${id},${title},${randomArtist}\n`;
       if (i === 0) {

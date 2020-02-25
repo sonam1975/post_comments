@@ -1,7 +1,7 @@
 const { connection } = require("../config.js");
 
 const loadReposts = () => {
-  const repost = `load data local infile '../csvGenerator/reposts.csv'
+  const reposts = `load data local infile '../csvGenerator/reposts.csv'
      into table reposts
      fields terminated by ','
      enclosed by '"'
